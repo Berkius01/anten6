@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31005.135
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "anten6", "anten6.csproj", "{4FBE1E94-B8F6-40E9-B230-68B4074917C3}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4FBE1E94-B8F6-40E9-B230-68B4074917C3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4FBE1E94-B8F6-40E9-B230-68B4074917C3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4FBE1E94-B8F6-40E9-B230-68B4074917C3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4FBE1E94-B8F6-40E9-B230-68B4074917C3}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8059A813-D73C-404B-A013-67C81BE89AA5}
+	EndGlobalSection
+EndGlobal
