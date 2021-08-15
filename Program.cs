@@ -2,6 +2,7 @@
 using System.Net;
 using System.Net.Sockets;
 using System.Text;
+using System.Threading;
 
 namespace ServerSocketApp
 {
@@ -26,27 +27,29 @@ namespace ServerSocketApp
             IPAddress ipAddress = IPAddress.Parse("192.168.0.10");
             IPEndPoint localEndPoint = new IPEndPoint(ipAddress, 5000);
 
+            Socket listener = new Socket(ipAddress.AddressFamily, SocketType.Stream, ProtocolType.Tcp);
+            // A Socket must be associated with an endpoint using the Bind method  
+            listener.Bind(localEndPoint);
+            // Specify how many requests a Socket can listen before it gives Server busy response.  
+            // We will listen 10 requests at a time  
+            listener.Listen(10);
 
             try
             {
 
                 // Create a Socket that will use Tcp protocol      
-                Socket listener = new Socket(ipAddress.AddressFamily, SocketType.Stream, ProtocolType.Tcp);
-                // A Socket must be associated with an endpoint using the Bind method  
-                listener.Bind(localEndPoint);
-                // Specify how many requests a Socket can listen before it gives Server busy response.  
-                // We will listen 10 requests at a time  
-                listener.Listen(10);
-
-                Console.WriteLine("Waiting for a connection...");
+                var milliseconds = 1000;
                 Socket handler = listener.Accept();
-                Console.WriteLine("Waiting for a connection...");
-                // Incoming data from the client.    
+                while (true) { 
+                Console.WriteLine("Server Başlatıldı...");
+                
+                Console.WriteLine("Client bağlandı...");
+                // Incoming data from the client.   
                 string data = null;
-                byte[] bytes = new byte[1024];
+                byte[] bytes;
 
                 
-                Console.WriteLine("Waiting for a connection...");
+                Console.WriteLine("Veri iletildi...");
                 bytes = new byte[2000000000];
                 int bytesRec = handler.Receive(bytes);
                 data += Encoding.ASCII.GetString(bytes, 0, bytesRec);
@@ -60,8 +63,11 @@ namespace ServerSocketApp
 
                 byte[] msg = Encoding.ASCII.GetBytes(data);
                 handler.Send(msg);
-                handler.Shutdown(SocketShutdown.Both);
-                handler.Close();
+                //handler.Shutdown(SocketShutdown.Both);
+                //handler.Close();
+                Thread.Sleep(milliseconds);
+                }
+
             }
             catch (Exception e)
             {
